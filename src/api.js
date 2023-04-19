@@ -1,8 +1,8 @@
-const getWeather = async (location, days) => {
+const getForecast = async (location, days) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '3e76fac829msh9e23f2f8b2c65cbp1bd78ajsn60031c28c34a',
+      'X-RapidAPI-Key': '',
       'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
     }
   };
@@ -16,4 +16,4 @@ const getWeather = async (location, days) => {
   }
 }
 
-export default getWeather;
+export { getForecast };

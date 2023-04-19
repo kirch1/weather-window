@@ -1,9 +1,9 @@
 import './App.css';
-import getWeather from './api';
+import {getForecast} from './api';
 
 function App() {
 
-  getWeather('67401', 3);
+  getForecast('67401', 3);
 
   return (
     <div className="App">
