@@ -1,0 +1,20 @@
+.current-weather-parent {
+  margin: 40px;
+  display: flex;
+  gap: 1rem;
+}
+
+.current-weather-location {
+  color: #F2F2F2;
+  margin: 0.5rem 0 0.5rem 0;
+  font-size: 3rem;
+}
+
+.current-weather-data {
+  color: #F2F2F2;
+  font-size: 1.5rem;
+}
+
+.current-weather-icon {
+  width: 120px;
+}

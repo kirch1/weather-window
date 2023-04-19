@@ -1,4 +1,5 @@
 import Header from './components/Header/Header';
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import {getForecast} from './api';
 import './App.css';
 
@@ -8,7 +9,9 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <main></main>
+      <main>
+        <CurrentWeather />
+      </main>
     </div>
   );
 }
