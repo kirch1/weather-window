@@ -1,4 +1,4 @@
-const getForecast = async (location, days) => {
+const getWeather = async (location, days, setError) => {
   const options = {
     method: 'GET',
     headers: {
@@ -9,11 +9,14 @@ const getForecast = async (location, days) => {
   
   try {
     const response = await fetch(`https://weatherapi-com.p.rapidapi.com/forecast.json?q=${location}&days=${days}`, options);
+    if(!response.ok) {
+      throw new Error(response.status);
+    }
     const data = await response.json();
-    console.log(data)
-  }catch(err) {
-    console.error(err);
+    return data;
+  }catch(error) {
+    setError(error.toString());
   }
 }
 
-export { getForecast };
+export default getWeather;
