@@ -1,7 +1,7 @@
 .daily-forecast-parent {
   display: flex;
   width: 90%;
-  height: 110px;
+  height: auto;
   background-color: #f2f2f27b;
   overflow-x: auto;
   gap: 4px;
