@@ -1,34 +1,12 @@
 import HourForecast from './HourForecast/HourForecast';
 import './DailyForecast.css';
 
-const DailyForecast = () => {
-
-  return(
+const DailyForecast = ({forecast}) => {
+  const hours = forecast.hour.map(hour => <HourForecast key={hour.time_epoch} hour={hour}/>);
+  return(    
     <div className='daily-forecast-parent'>
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
-      <HourForecast />
+      {/* <h3>{forecast.date}</h3> */}
+      {hours}
     </div>
   )
 }
