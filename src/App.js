@@ -1,10 +1,10 @@
 import Header from './components/Header/Header';
 import CurrentWeather from './components/CurrentWeather/CurrentWeather';
 import getWeather from './api';
-import './App.css';
 import ConditionsSelector from './components/ConditionsSelector/ConditionsSelector';
 import DailyForecast from './components/DailyForecast/DailyForecast';
 import { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
   const [location, setLocation] = useState('67401');
@@ -15,17 +15,21 @@ function App() {
     setWeather(await getWeather(location, 1, setError));
   }
 
+  const getForecastDays = () => {
+    return weather.forecast.forecastday.map(forecast => <DailyForecast forecast={forecast} key={forecast.date_epoch}/>);
+  }
+
   useEffect(() => {
     getData();
   }, [])
 
   return (
     <div className="App">
-      <Header />
+      {weather && <Header time={weather.location.localtime}/>}
       <main>
         {weather ? <CurrentWeather location={weather.location} current={weather.current}/> : <p>Loading</p>}
         <ConditionsSelector />
-        <DailyForecast />
+        {weather ? getForecastDays() : <p>Loading</p>}
       </main>
     </div>
   );

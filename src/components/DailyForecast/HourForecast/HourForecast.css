@@ -1,5 +1,41 @@
 .hour-forecast-parent {
-  background-color: #63ac467b;
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #efeff0;
+  width: 140px;
+  height: 110px;
+  flex-shrink: 0;
   text-align: center;
+  padding: 0.6rem 1rem;
+  margin-bottom: 0.3rem;
+}
+
+.hour-forecast-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hour-forecast-mini {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.hour-icon {
+  width: 26px;
+}
+
+.hour-icon-small {
+  width: 12px;
+}
+
+.hour-data {
+  margin: 0;
+  font-size: 0.7rem;
+}
+
+.arrow {
+  margin: 0;
 }

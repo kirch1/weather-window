@@ -2,10 +2,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 80%;
+  width: 90%;
   height: 100px;
   background-color: #f2f2f27b;
-  padding: 15px;
 }
 
 .condition-selector-label {
