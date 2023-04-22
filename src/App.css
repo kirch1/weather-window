@@ -1,7 +1,14 @@
+:root {
+  --black: #313638;
+  --white: #FFFFFB;
+  --tranparent-black: #3136381e;
+  --tranparent-white: #fffffb60;
+}
+
 .App {
   background: rgb(102,186,224);
   background: linear-gradient(180deg, rgba(102,186,224,1) 0%, rgba(251,226,130,1) 100%);
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -10,6 +17,7 @@ main {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  gap: 15vh;
   align-items: center;
+  gap: 6vh;
+  max-width: 1200px;
 }

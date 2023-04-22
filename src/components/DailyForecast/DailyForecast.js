@@ -2,12 +2,16 @@ import HourForecast from './HourForecast/HourForecast';
 import './DailyForecast.css';
 
 const DailyForecast = ({forecast}) => {
+  console.log(forecast.date)
+  const formatted = new Date(forecast.date)
   const hours = forecast.hour.map(hour => <HourForecast key={hour.time_epoch} hour={hour}/>);
   return(    
     <div className='daily-forecast-parent'>
-      {/* <h3>{forecast.date}</h3> */}
-      {hours}
-    </div>
+      <p className='date-text'>{forecast.date}</p>
+      <div className='daily-forecast-flex'>
+        {hours}
+      </div>
+    </div> 
   )
 }
 

@@ -34,9 +34,10 @@ const HourForecast = ({hour}) => {
       <div className='hour-forecast-row'>
         <div className='hour-forecast-mini'>
           <img className='hour-icon-small' src={wind} alt='Hour icon small'/>
-          <p className='hour-data'>{`${Math.round(hour.wind_mph)} / ${Math.round(hour.gust_mph)} mph`}</p>
+          <p className='hour-data'>{`${Math.round(hour.wind_mph)} mph`}</p>
           <img className='hour-icon-small arrow' src={arrow} alt='Arrow icon' style={{transform:`rotate(${hour.wind_degree}deg)`}}/>
         </div>
+          <p className='hour-data'>{`${Math.round(hour.gust_mph)} mph gust`}</p>
       </div>
 
     </div>

@@ -7,12 +7,12 @@ import { useEffect, useState } from 'react';
 import './App.css';
 
 function App() {
-  const [location, setLocation] = useState('67401');
+  const [location, setLocation] = useState('boulder, co');
   const [weather, setWeather] = useState(null);
   const [errorMsg, setError] = useState('');
 
   const getData = async () => {
-    setWeather(await getWeather(location, 1, setError));
+    setWeather(await getWeather(location, 3, setError));
   }
 
   const getForecastDays = () => {
@@ -25,12 +25,16 @@ function App() {
 
   return (
     <div className="App">
-      {weather && <Header time={weather.location.localtime}/>}
-      <main>
-        {weather ? <CurrentWeather location={weather.location} current={weather.current}/> : <p>Loading</p>}
-        <ConditionsSelector />
-        {weather ? getForecastDays() : <p>Loading</p>}
-      </main>
+      {weather ?
+        <>
+          <Header time={weather.location.localtime}/>
+          <main>
+            <CurrentWeather location={weather.location} current={weather.current}/> 
+            <ConditionsSelector />
+            {getForecastDays()}
+          </main>
+        </> :
+        <p>Loading</p>}
     </div>
   );
 }
