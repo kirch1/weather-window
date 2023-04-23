@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './HourForecast.css';
 import wind from '../../../assets/icons/wind.svg';
 import rain from '../../../assets/icons/rain.svg';
@@ -45,3 +46,17 @@ const HourForecast = ({hour}) => {
 }
 
 export default HourForecast;
+
+HourForecast.propTypes = {
+  hour: PropTypes.shape({
+    time: PropTypes.string.isRequired,
+    condition: PropTypes.object.isRequired,
+    temp_f: PropTypes.number.isRequired,
+    feelslike_f: PropTypes.number.isRequired,
+    chance_of_rain: PropTypes.number.isRequired,
+    chance_of_snow: PropTypes.number.isRequired,
+    humidity: PropTypes.number.isRequired,
+    wind_mph: PropTypes.number.isRequired,
+    gust_mph: PropTypes.number.isRequired
+  })
+}

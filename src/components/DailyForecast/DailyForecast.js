@@ -1,4 +1,5 @@
 import HourForecast from "./HourForecast/HourForecast";
+import PropTypes from 'prop-types';
 import "./DailyForecast.css";
 
 const DailyForecast = ({ forecast, windows }) => {
@@ -15,3 +16,8 @@ const DailyForecast = ({ forecast, windows }) => {
 };
 
 export default DailyForecast;
+
+DailyForecast.propTypes = {
+  forecast: PropTypes.object.isRequired,
+  windows: PropTypes.array.isRequired
+}

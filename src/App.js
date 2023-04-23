@@ -9,7 +9,7 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { Activities } from "./components/Activities/Activities";
 
 function App() {
-  const [location, setLocation] = useState("67401");
+  const [location, setLocation] = useState("denver");
   const [weather, setWeather] = useState(null);
   const [windows, setWindows] = useState([]);
   const [temp, setTemp] = useState([-20, 120]);
@@ -20,7 +20,7 @@ function App() {
   const [errorMsg, setError] = useState("");
 
   const getData = async () => {
-    setWeather(await getWeather(location, 1, setError));
+    setWeather(await getWeather(location, 3, setError));
   };
 
   const findWindows = () => {
