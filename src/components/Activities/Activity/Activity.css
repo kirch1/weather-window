@@ -1,0 +1,57 @@
+.activity-parent {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--tranparent-white);
+  height: auto;
+  flex-shrink: 0;
+  text-align: center;
+  border-radius: 4px;
+  box-shadow: var(--tranparent-black) 0px 0px 0px 1px;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--tranparent-black);
+}
+
+.activity-name{
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.activity-conditions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 1.5rem;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 0.5rem;
+}
+
+.single-condition {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.condition-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.condition-value {
+  margin: 0;
+  background-color: var(--tranparent-black);
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+}

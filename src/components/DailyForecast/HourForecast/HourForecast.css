@@ -3,24 +3,20 @@
   flex-direction: column;
   justify-content: space-between;
   background-color: var(--tranparent-white);
-  width: 160px;
-  height: 120px;
+  width: 12rem;
+  height: auto;
   flex-shrink: 0;
   text-align: center;
-  padding: 0.8rem 1rem;
+  padding: 0.4rem 1rem 0.8rem 1rem;
   border-radius: 4px;
   box-shadow: var(--tranparent-black) 0px 0px 0px 1px;
-}
-
-.is-window {
-  background-color: #56c8738c;
 }
 
 .hour-forecast-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 7px;
+  padding: 0.4rem 0;
   border-bottom: 1px solid #0000001e;
 }
 
