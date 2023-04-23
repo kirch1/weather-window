@@ -12,7 +12,7 @@ const Header = () => {
         <Link to='/'>
           <button>Home</button>
         </Link> : 
-        <Link to='/activities'>
+        <Link to='/activities' id='activities-button'>
           <button>Activities</button>
         </Link>
       }
