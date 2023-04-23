@@ -1,10 +1,17 @@
 import { useHistory } from 'react-router-dom';
 import './Activity.css';
 
-export const Activity = ({activity}) => {
-  const history = useHistory();
+export const Activity = ({activity, conditions}) => {
+  const { setTemp, setWind, setRain, setSnow, setHumidity, findWindows } = conditions;
 
+  const history = useHistory();
   const setConditions = () => {
+    setTemp(activity.temp);
+    setWind(activity.wind);
+    setRain(activity.rain);
+    setSnow(activity.snow);
+    setHumidity(activity.humidity);
+    findWindows();
     history.push('/');
   }
 

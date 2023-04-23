@@ -1,11 +1,24 @@
 .conditions-selector-parent {
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 90%;
+  max-width: 1200px;
+  padding: 1rem 1rem;
+}
+
+.header-text {
+  color: var(--black);
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.conditions-selector-flex {
+  display: flex;
   flex-wrap: wrap;
   gap: 2rem;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
-  padding: 1rem 1rem;
   color: var(--white);
   border-radius: 4px;
 }

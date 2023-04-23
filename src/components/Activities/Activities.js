@@ -1,7 +1,7 @@
 import "./Activities.css";
 import { Activity } from "./Activity/Activity";
 
-export const Activities = () => {
+export const Activities = ({conditions}) => {
   const activities = [
     {
       name: "Running",
@@ -16,7 +16,7 @@ export const Activities = () => {
       temp: [20, 60],
       wind: [0, 15],
       rain: [0, 10],
-      snow: [0, 10],
+      snow: [50, 100],
       humidity: [0, 100],
     },
     {
@@ -30,7 +30,7 @@ export const Activities = () => {
   ];
 
   const activityComponents = activities.map(activity => (
-    <Activity activity={activity} key={activity.name}/>
+    <Activity activity={activity} key={activity.name} conditions={conditions}/>
   ));
 
   return <div className="activities-parent">{activityComponents}</div>;

@@ -12,12 +12,18 @@ function App() {
   const [location, setLocation] = useState("80219");
   const [weather, setWeather] = useState(null);
   const [windows, setWindows] = useState([]);
+  const [temp, setTemp] = useState([-20, 120]);
+  const [wind, setWind] = useState([0, 100]);
+  const [rain, setRain] = useState([0, 100]);
+  const [snow, setSnow] = useState([0, 100]);
+  const [humidity, setHumidity] = useState([0, 100]);
   const [errorMsg, setError] = useState("");
+
   const getData = async () => {
     setWeather(await getWeather(location, 3, setError));
   };
 
-  const findWindows = (temp, wind, rain, snow, humidity) => {
+  const findWindows = () => {
     const checkRange = (x, min, max) => x >= min && x <= max;
 
     const windows = weather.forecast.forecastday.reduce((acc, day) => {
@@ -46,6 +52,15 @@ function App() {
     });
   };
 
+  const conditionProps = { 
+    temp, setTemp, 
+    wind, setWind, 
+    rain, setRain, 
+    snow, setSnow, 
+    humidity, setHumidity,
+    findWindows
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -59,11 +74,11 @@ function App() {
           <p>Error</p>
         </Route>
         <Route path="/activities">
-          <Activities />
+          <Activities conditions={conditionProps}/>
         </Route>
         <Route exact path="/">
           {weather && <>
-            <ConditionsSelector findWindows={findWindows} />
+            <ConditionsSelector conditions={conditionProps} />
             <div className="forecast-days-parent">
               {getForecastDays()}
             </div>

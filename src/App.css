@@ -13,13 +13,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3.5rem;
-  padding-bottom: 5%;
+  gap: 2.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .forecast-days-parent {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   gap: 2rem;
   width: 90%;
   max-width: 1200px;
@@ -41,4 +42,24 @@ button {
 button:hover {
   background-color: var(--mid-black);
   color: var(--white);
+}
+
+.forecast-days-parent::-webkit-scrollbar {
+  width: 14px;
+}
+
+.forecast-days-parent::-webkit-scrollbar-track {
+  background-color: var(--tranparent-black);
+  border-radius: 10px;
+}
+
+.forecast-days-parent::-webkit-scrollbar-thumb {
+  background-color: var(--white);
+  border-radius: 20px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+
+.moreInfo::-webkit-scrollbar-thumb:hover {
+  background-color: #396416;
 }
