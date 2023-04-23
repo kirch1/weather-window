@@ -13,14 +13,14 @@
   margin: 0 0 0 1px;
 }
 
-::-webkit-scrollbar{
+.daily-forecast-flex::-webkit-scrollbar{
   height: 8px;
   width: 4px;
   background: var(--tranparent-black);
   border-radius: 10px;
 }
 
-::-webkit-scrollbar-thumb:horizontal{
+.daily-forecast-flex::-webkit-scrollbar-thumb:horizontal{
   background: var(--white);
   border-radius: 10px;
 }

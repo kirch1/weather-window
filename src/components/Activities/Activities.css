@@ -1,8 +1,11 @@
 .activities-parent {
   display: flex;
-  flex-shrink: 0;
-  text-align: center;
-  padding: 1rem;
+  flex-direction: column;
+  gap: 1rem;
+  width: 90%;
+  max-width: 1200px;
+  padding: 0 1rem;
   border-radius: 4px;
-  box-shadow: var(--tranparent-black) 0px 0px 0px 1px;
+  flex-grow: 1;
+  overflow-y: auto;
 }

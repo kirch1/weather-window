@@ -1,5 +1,5 @@
-import { useState } from "react";
 import "./Activities.css";
+import { Activity } from "./Activity/Activity";
 
 export const Activities = () => {
   const activities = [
@@ -9,7 +9,7 @@ export const Activities = () => {
       wind: [0, 10],
       rain: [0, 30],
       snow: [0, 30],
-      humidity: [0, 100],
+      humidity: [0, 60],
     },
     {
       name: "Skiing",
@@ -26,8 +26,12 @@ export const Activities = () => {
       rain: [0, 30],
       snow: [0, 30],
       humidity: [0, 100],
-    }
+    },
   ];
 
-  return <div className="activities-parent"></div>;
+  const activityComponents = activities.map((activity) => (
+    <Activity activity={activity} />
+  ));
+
+  return <div className="activities-parent">{activityComponents}</div>;
 };
