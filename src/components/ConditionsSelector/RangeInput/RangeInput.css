@@ -19,7 +19,7 @@
 .range-condition-input {
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  width: 3.5rem;
+  width: 4.2rem;
   border: none;
   font-size: 1.2rem;
   font-weight: normal;
@@ -35,5 +35,5 @@
 .range-condition-input::-webkit-inner-spin-button, 
 .range-condition-input::-webkit-outer-spin-button {
   opacity: 0.5;
-  margin: -2px -2px -2px 0;
+  /* margin: -2px -2px -2px 0; */
 }

@@ -5,6 +5,8 @@ import ConditionsSelector from "./components/ConditionsSelector/ConditionsSelect
 import DailyForecast from "./components/DailyForecast/DailyForecast";
 import { useEffect, useState } from "react";
 import "./App.css";
+import { Redirect, Route, Switch } from "react-router-dom";
+import { Activities } from "./components/Activities/Activities";
 
 function App() {
   const [location, setLocation] = useState("80219");
@@ -17,7 +19,7 @@ function App() {
 
   const findWindows = (temp, wind, rain, snow, humidity) => {
     const checkRange = (x, min, max) => x >= min && x <= max;
-    
+
     const windows = weather.forecast.forecastday.reduce((acc, day) => {
       day.hour.forEach((hour) => {
         if (
@@ -38,7 +40,9 @@ function App() {
 
   const getForecastDays = () => {
     return weather.forecast.forecastday.map((forecast) => {
-      return <DailyForecast forecast={forecast} key={forecast.date_epoch} windows={windows}/>;
+      return (
+        <DailyForecast forecast={forecast} key={forecast.date_epoch} windows={windows}/>
+      );
     });
   };
 
@@ -49,17 +53,26 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {weather ? (
-        <>
-          <main>
-            <CurrentWeather location={weather.location} current={weather.current} />
-            <ConditionsSelector findWindows={findWindows}/>
-            {getForecastDays()}
-          </main>
-        </>
-      ) : (
-        <p>Loading</p>
-      )}
+      {weather && <CurrentWeather location={weather.location} current={weather.current} />}
+      <Switch>
+        <Route path="/error">
+          <p>Error</p>
+        </Route>
+        <Route path="/activities">
+          <Activities />
+        </Route>
+        <Route exact path="/">
+          {weather && <>
+            <ConditionsSelector findWindows={findWindows} />
+            <div className="forecast-days-parent">
+              {getForecastDays()}
+            </div>
+          </>}
+        </Route>
+        <Route>
+          <Redirect to="error" />
+        </Route>
+      </Switch>
     </div>
   );
 }

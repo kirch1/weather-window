@@ -2,7 +2,7 @@
   --black: #313638;
   --white: #FFFFFB;
   --tranparent-black: #3136381e;
-  --tranparent-white: #fffffba2;
+  --tranparent-white: #fffffbb3;
 }
 
 .App {
@@ -11,13 +11,16 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  padding-bottom: 5%;
 }
 
-main {
-  flex-grow: 1;
+.forecast-days-parent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 6vh;
-  max-width: 1200px;
+  gap: 2rem;
+  width: 90%;
+  padding: 0 1rem;
+  overflow-y: auto;
 }
