@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [location, setLocation] = useState("67401");
+  const [location, setLocation] = useState("80219");
   const [weather, setWeather] = useState(null);
   const [windows, setWindows] = useState([]);
   const [errorMsg, setError] = useState("");
@@ -48,9 +48,9 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       {weather ? (
         <>
-          <Header time={weather.location.localtime} />
           <main>
             <CurrentWeather location={weather.location} current={weather.current} />
             <ConditionsSelector findWindows={findWindows}/>

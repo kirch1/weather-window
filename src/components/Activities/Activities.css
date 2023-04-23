@@ -1,0 +1,8 @@
+.activities-parent {
+  display: flex;
+  flex-shrink: 0;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: var(--tranparent-black) 0px 0px 0px 1px;
+}
