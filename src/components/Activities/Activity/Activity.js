@@ -19,7 +19,7 @@ export const Activity = ({activity, conditions}) => {
     <div className='activity-parent'>
       <div className='activity-header'>
         <p className='activity-name'>{activity.name}</p>
-        <button onClick={setConditions}>Set</button>
+        <button onClick={setConditions} className='set-button'>Set</button>
       </div>
       <div className='activity-conditions'>
         <div className='single-condition'>
