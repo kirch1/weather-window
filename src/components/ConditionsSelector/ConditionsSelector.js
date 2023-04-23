@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useEffect, useState } from 'react';
 import './ConditionsSelector.css';
 import RangeInput from './RangeInput/RangeInput';
@@ -22,3 +23,19 @@ const ConditionsSelector = ({conditions}) => {
 }
 
 export default ConditionsSelector;
+
+ConditionsSelector.propTypes = {
+  conditions: PropTypes.shape({
+    temp: PropTypes.array.isRequired,
+    wind: PropTypes.array.isRequired,
+    rain: PropTypes.array.isRequired,
+    snow: PropTypes.array.isRequired,
+    humidity: PropTypes.array.isRequired,
+    setTemp: PropTypes.func.isRequired,
+    setWind: PropTypes.func.isRequired,
+    setRain: PropTypes.func.isRequired,
+    setSnow: PropTypes.func.isRequired,
+    setHumidity: PropTypes.func.isRequired,
+    findWindows: PropTypes.func.isRequired
+  })
+}

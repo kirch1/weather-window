@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import './Activity.css';
 
@@ -45,4 +46,21 @@ export const Activity = ({activity, conditions}) => {
       </div>
     </div>
   )
+}
+
+Activity.propTypes = {
+  activity: PropTypes.arrayOf(PropTypes.object).isRequired,
+  conditions: PropTypes.shape({
+    temp: PropTypes.array.isRequired,
+    wind: PropTypes.array.isRequired,
+    rain: PropTypes.array.isRequired,
+    snow: PropTypes.array.isRequired,
+    humidity: PropTypes.array.isRequired,
+    setTemp: PropTypes.func.isRequired,
+    setWind: PropTypes.func.isRequired,
+    setRain: PropTypes.func.isRequired,
+    setSnow: PropTypes.func.isRequired,
+    setHumidity: PropTypes.func.isRequired,
+    findWindows: PropTypes.func.isRequired
+  })
 }

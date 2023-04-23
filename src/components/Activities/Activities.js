@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import "./Activities.css";
 import { Activity } from "./Activity/Activity";
 
@@ -35,3 +36,19 @@ export const Activities = ({conditions}) => {
 
   return <div className="activities-parent">{activityComponents}</div>;
 };
+
+Activities.propTypes = {
+  conditions: PropTypes.shape({
+    temp: PropTypes.array.isRequired,
+    wind: PropTypes.array.isRequired,
+    rain: PropTypes.array.isRequired,
+    snow: PropTypes.array.isRequired,
+    humidity: PropTypes.array.isRequired,
+    setTemp: PropTypes.func.isRequired,
+    setWind: PropTypes.func.isRequired,
+    setRain: PropTypes.func.isRequired,
+    setSnow: PropTypes.func.isRequired,
+    setHumidity: PropTypes.func.isRequired,
+    findWindows: PropTypes.func.isRequired
+  })
+}

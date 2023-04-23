@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import "./RangeInput.css";
 
 const RangeInput = ({ title, min, max, values, setRange }) => {
@@ -28,3 +29,11 @@ const RangeInput = ({ title, min, max, values, setRange }) => {
 };
 
 export default RangeInput;
+
+RangeInput.propTypes = {
+  title: PropTypes.string,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  values: PropTypes.arrayOf(PropTypes.number),
+  setRange: PropTypes.func
+}
