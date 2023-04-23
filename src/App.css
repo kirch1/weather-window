@@ -2,6 +2,7 @@
   --black: #313638;
   --white: #FFFFFB;
   --tranparent-black: #3136381e;
+  --mid-black: #3136387d;
   --tranparent-white: #fffffbb3;
 }
 
@@ -27,14 +28,17 @@
 }
 
 button {
-  border: 1px solid var(--tranparent-black);
+  color: var(--black);
+  font-family: 'Montserrat', sans-serif;
+  border: 1px solid var(--mid-black);
   border-radius: 20px;
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.8rem;
   cursor: pointer;
   background-color: var(--white);
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 button:hover {
-  background-color: var(--tranparent-black);
+  background-color: var(--mid-black);
+  color: var(--white);
 }

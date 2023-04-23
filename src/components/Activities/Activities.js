@@ -29,8 +29,8 @@ export const Activities = () => {
     },
   ];
 
-  const activityComponents = activities.map((activity) => (
-    <Activity activity={activity} />
+  const activityComponents = activities.map(activity => (
+    <Activity activity={activity} key={activity.name}/>
   ));
 
   return <div className="activities-parent">{activityComponents}</div>;

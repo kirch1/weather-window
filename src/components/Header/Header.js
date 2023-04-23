@@ -1,14 +1,21 @@
 import './Header.css';
 import logo from '../../assets/ww_logo.svg';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
-const Header = ({time}) => {
+const Header = () => {
+  const location = useLocation();
   return(
     <header>
       <img src={logo} alt='App logo' className='header-logo'/>
-      <Link to='/activities'>
-        <button>Activities</button>
-      </Link>
+      {
+        location.pathname === '/activities' ? 
+        <Link to='/'>
+          <button>Home</button>
+        </Link> : 
+        <Link to='/activities'>
+          <button>Activities</button>
+        </Link>
+      }
     </header>
   )
 }

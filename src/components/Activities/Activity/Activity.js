@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './Activity.css';
 
 export const Activity = ({activity}) => {
+  const history = useHistory();
+
+  const setConditions = () => {
+    history.push('/');
+  }
+
   return(
     <div className='activity-parent'>
       <div className='activity-header'>
         <p className='activity-name'>{activity.name}</p>
-        <button>Set</button>
+        <button onClick={setConditions}>Set</button>
       </div>
       <div className='activity-conditions'>
         <div className='single-condition'>
