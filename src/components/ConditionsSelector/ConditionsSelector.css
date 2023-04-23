@@ -1,12 +1,11 @@
 .conditions-selector-parent {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
   align-items: center;
   width: 90%;
-  height: 100px;
-  background-color: #f2f2f27b;
-}
-
-.condition-selector-label {
-  margin: 0;
+  padding: 1rem 0;
+  color: var(--white);
+  border-radius: 4px;
 }

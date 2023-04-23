@@ -1,0 +1,39 @@
+.range-input-parent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.range-input-title {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.dual-input {
+  overflow: hidden;
+  border-radius: 4px;
+  box-shadow: var(--tranparent-black) 0px 0px 0px 1px;
+}
+
+.range-condition-input {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  width: 3.5rem;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: normal;
+  color: var(--black);
+  padding: 0.5rem;
+  background-color: var(--tranparent-white);
+}
+
+.range-condition-input:focus {
+  outline: none;
+}
+
+.range-condition-input::-webkit-inner-spin-button, 
+.range-condition-input::-webkit-outer-spin-button {
+  opacity: 0.5;
+  margin: -2px -2px -2px 0;
+}
