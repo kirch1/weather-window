@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ConditionsSelector.css';
 import RangeInput from './RangeInput/RangeInput';
 
-const ConditionsSelector = () => {
+const ConditionsSelector = ({findWindows}) => {
   const [temp, setTemp] = useState([0, 150]);
   const [wind, setWind] = useState([0, 100]);
   const [rain, setRain] = useState([0, 100]);
   const [snow, setSnow] = useState([0, 100]);
   const [humidity, setHumidity] = useState([0, 100]);
+
+  useEffect(() => {
+    findWindows(temp, wind, rain, snow, humidity);
+  }, [temp, wind, rain, snow, humidity])
 
   return(  
     <form className='conditions-selector-parent'>

@@ -1,40 +1,64 @@
-import Header from './components/Header/Header';
-import CurrentWeather from './components/CurrentWeather/CurrentWeather';
-import getWeather from './api';
-import ConditionsSelector from './components/ConditionsSelector/ConditionsSelector';
-import DailyForecast from './components/DailyForecast/DailyForecast';
-import { useEffect, useState } from 'react';
-import './App.css';
+import Header from "./components/Header/Header";
+import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import getWeather from "./api";
+import ConditionsSelector from "./components/ConditionsSelector/ConditionsSelector";
+import DailyForecast from "./components/DailyForecast/DailyForecast";
+import { useEffect, useState } from "react";
+import "./App.css";
 
 function App() {
-  const [location, setLocation] = useState('boulder, co');
+  const [location, setLocation] = useState("boulder, co");
   const [weather, setWeather] = useState(null);
-  const [errorMsg, setError] = useState('');
-
+  const [windows, setWindows] = useState([]);
+  const [errorMsg, setError] = useState("");
   const getData = async () => {
-    setWeather(await getWeather(location, 3, setError));
-  }
+    setWeather(await getWeather(location, 1, setError));
+  };
 
   const getForecastDays = () => {
-    return weather.forecast.forecastday.map(forecast => <DailyForecast forecast={forecast} key={forecast.date_epoch}/>);
-  }
+    return weather.forecast.forecastday.map((forecast) => {
+      return <DailyForecast forecast={forecast} key={forecast.date_epoch} />;
+    });
+  };
+
+  const findWindows = (temp, wind, rain, snow, humidity) => {
+    const isBetween = (x, min, max) => x >= min && x <= max;
+    const windows = weather.forecast.forecastday.reduce((acc, day) => {
+      day.hour.forEach((hour) => {
+        if (
+          isBetween(hour.temp_f, temp[0], temp[1]) &&
+          isBetween(hour.wind_mph, wind[0], wind[1]) &&
+          isBetween(hour.chance_of_rain, rain[0], rain[1]) &&
+          isBetween(hour.chance_of_snow, snow[0], snow[1]) &&
+          isBetween(hour.humidity, humidity[0], humidity[1])
+        ) {
+          acc.push(hour.time_epoch);
+        }
+      });
+      return acc;
+    }, []);
+
+    setWindows(windows);
+  };
 
   useEffect(() => {
     getData();
-  }, [])
+  }, []);
 
   return (
     <div className="App">
-      {weather ?
+      {weather ? (
         <>
-          <Header time={weather.location.localtime}/>
+          <Header time={weather.location.localtime} />
           <main>
-            <CurrentWeather location={weather.location} current={weather.current}/> 
-            <ConditionsSelector />
+            <CurrentWeather location={weather.location} current={weather.current} />
+            <ConditionsSelector findWindows={findWindows}/>
             {getForecastDays()}
           </main>
-        </> :
-        <p>Loading</p>}
+        </>
+      ) : (
+        <p>Loading</p>
+      )}
     </div>
   );
 }
