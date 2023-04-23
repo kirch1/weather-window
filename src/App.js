@@ -7,30 +7,25 @@ import { useEffect, useState } from "react";
 import "./App.css";
 
 function App() {
-  const [location, setLocation] = useState("boulder, co");
+  const [location, setLocation] = useState("67401");
   const [weather, setWeather] = useState(null);
   const [windows, setWindows] = useState([]);
   const [errorMsg, setError] = useState("");
   const getData = async () => {
-    setWeather(await getWeather(location, 1, setError));
-  };
-
-  const getForecastDays = () => {
-    return weather.forecast.forecastday.map((forecast) => {
-      return <DailyForecast forecast={forecast} key={forecast.date_epoch} />;
-    });
+    setWeather(await getWeather(location, 3, setError));
   };
 
   const findWindows = (temp, wind, rain, snow, humidity) => {
-    const isBetween = (x, min, max) => x >= min && x <= max;
+    const checkRange = (x, min, max) => x >= min && x <= max;
+    
     const windows = weather.forecast.forecastday.reduce((acc, day) => {
       day.hour.forEach((hour) => {
         if (
-          isBetween(hour.temp_f, temp[0], temp[1]) &&
-          isBetween(hour.wind_mph, wind[0], wind[1]) &&
-          isBetween(hour.chance_of_rain, rain[0], rain[1]) &&
-          isBetween(hour.chance_of_snow, snow[0], snow[1]) &&
-          isBetween(hour.humidity, humidity[0], humidity[1])
+          checkRange(hour.temp_f, temp[0], temp[1]) &&
+          checkRange(hour.wind_mph, wind[0], wind[1]) &&
+          checkRange(hour.chance_of_rain, rain[0], rain[1]) &&
+          checkRange(hour.chance_of_snow, snow[0], snow[1]) &&
+          checkRange(hour.humidity, humidity[0], humidity[1])
         ) {
           acc.push(hour.time_epoch);
         }
@@ -39,6 +34,12 @@ function App() {
     }, []);
 
     setWindows(windows);
+  };
+
+  const getForecastDays = () => {
+    return weather.forecast.forecastday.map((forecast) => {
+      return <DailyForecast forecast={forecast} key={forecast.date_epoch} windows={windows}/>;
+    });
   };
 
   useEffect(() => {

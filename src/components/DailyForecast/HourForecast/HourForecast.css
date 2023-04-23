@@ -12,6 +12,10 @@
   box-shadow: var(--tranparent-black) 0px 0px 0px 1px;
 }
 
+.is-window {
+  background-color: #56c8738c;
+}
+
 .hour-forecast-row {
   display: flex;
   align-items: center;

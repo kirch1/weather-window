@@ -3,7 +3,7 @@ import './ConditionsSelector.css';
 import RangeInput from './RangeInput/RangeInput';
 
 const ConditionsSelector = ({findWindows}) => {
-  const [temp, setTemp] = useState([0, 150]);
+  const [temp, setTemp] = useState([-20, 120]);
   const [wind, setWind] = useState([0, 100]);
   const [rain, setRain] = useState([0, 100]);
   const [snow, setSnow] = useState([0, 100]);
