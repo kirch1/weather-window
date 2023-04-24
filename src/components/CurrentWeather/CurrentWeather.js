@@ -1,20 +1,23 @@
 import PropTypes from 'prop-types';
 import stateDict from '../../stateDict';
-import sunny from '../../assets/icons/sunny.svg';
+import sunny from '../../assets/primary-icons/sunny.svg';
 import './CurrentWeather.css';
 
 const CurrentWeather = ({location, current}) => {
   
   return(
-    <section className='current-weather-parent'>
-      <div>
-        <h1 className='current-weather-location'>{`${location.name}, ${stateDict[location.region]}`}</h1>
-        <div className='current-weather-data'>
-          {`${current.condition.text} - ${Math.round(current.temp_f)}\u00B0 - ${Math.round(current.wind_mph)}mph`}
+    <div className='card current-weather-card'>
+      <p className='card-title'>Current Weather</p>
+      <div className='current-weather-parent'>
+        <div className='current-weather-left'>
+          <h1 className='current-weather-location'>{`${location.name}, ${stateDict[location.region]}`}</h1>
+          <div className='current-weather-data'>
+            {`${current.condition.text} - ${Math.round(current.temp_f)}\u00B0 - ${Math.round(current.wind_mph)}mph`}
+          </div>
         </div>
+        <img src={sunny} alt={'current condition icon'} className='current-weather-icon'/>
       </div>
-      <img src={sunny} alt={'current condition icon'} className='current-weather-icon'/>
-    </section>
+    </div>
   )
 }
 

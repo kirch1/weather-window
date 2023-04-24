@@ -1,19 +1,23 @@
+.current-weather-card {
+  
+}
+
 .current-weather-parent {
+  color: var(--text-dark);
   display: flex;
   gap: 1rem;
+  padding: 1rem;
 }
 
 .current-weather-location {
-  color: var(--white);
   margin: 0.5rem 0 0.5rem 0;
   font-size: 3rem;
 }
 
 .current-weather-data {
-  color: var(--white);
   font-size: 1.5rem;
 }
 
 .current-weather-icon {
-  width: 120px;
+  width: 6rem;
 }
