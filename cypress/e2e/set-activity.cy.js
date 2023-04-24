@@ -1,6 +1,6 @@
 describe('Activities page', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=denver&days=3', {
+    cy.intercept('GET', 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=80227&days=3', {
       fixture: 'weather.json'
     })
     cy.visit('localhost:3000');
