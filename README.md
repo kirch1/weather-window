@@ -8,7 +8,7 @@ Weather Window is a React web application that allows users to find that perfect
 ***
 
 ### Preview of App
-![](src/demo.gif)
+![](src/assets/demo.gif)
 ***
 
 ### Technologies Used
@@ -16,7 +16,6 @@ Weather Window is a React web application that allows users to find that perfect
 - React
 - React Router
 - React PropTypes
-- Webpack
 - Cypress Testing
 - [Weather API](https://www.weatherapi.com/)
 ***
