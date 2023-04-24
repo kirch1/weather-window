@@ -1,0 +1,33 @@
+.activity-card {
+  min-height: 8rem;
+}
+.activity-conditions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5vw;
+  align-items: center;
+  flex-grow: 1;
+  padding-bottom: 0.5rem;
+}
+
+.single-condition {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.condition-label {
+  margin: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.condition-value {
+  margin: 0;
+  background-color: var(--tranparent-black);
+  padding: 0.1rem 0.5rem;
+  border-radius: 10px;
+}

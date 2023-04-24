@@ -5,7 +5,7 @@
   --mid-black: #3136387d;
   --tranparent-white: #fffffbb3;
 
-  --background-light: #f7f9fa;
+  --background-light: #E9EBEC;
   --card-bg-light: #ffffff;
   --text-dark: #313638;
 }
@@ -20,7 +20,7 @@
 main {
   display: flex;
   flex-direction: column;
-  padding: 2rem 3rem 0 3rem;
+  padding: 2rem 3rem;
   overflow: auto;
   gap: 1rem;
 }

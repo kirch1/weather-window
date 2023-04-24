@@ -9,7 +9,7 @@ const DailyForecast = ({ forecast, windows }) => {
     .map((hour) => <HourForecast key={hour.time_epoch} hour={hour} />);
   return (
     <div className='card daily-forecast-card'>
-      <p className='card-title'>{forecast.date} Forecast</p>
+      <p className='card-title'>{forecast.date} Forecast - {hours.length} Weather Windows</p>
       {hours.length ? <div className="daily-forecast-flex">{hours}</div> : <p>No Weather Windows Available</p>}
     </div>
   );

@@ -6,8 +6,9 @@ import DailyForecast from "./components/DailyForecast/DailyForecast";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Activities } from "./components/Activities/Activities";
 import cleanWeatherData from "./utilities";
+import activities from "./activitiesData";
+import { Activity } from "./components/Activity/Activity";
 
 function App() {
   const [location, setLocation] = useState('denver');
@@ -71,6 +72,12 @@ function App() {
     )
   }
 
+  const getActivities = () => {
+    return activities.map(activity => (
+      <Activity activity={activity} key={activity.name} conditions={conditionProps}/>
+    ));
+  }
+
   useEffect(() => {
     getData();
   }, []);
@@ -82,11 +89,11 @@ function App() {
         <Switch>
           <Route path='/error'>
             <p className="error-message">
-              {`Sorry, we have encountered a problem! \n ${errorMsg}`}
+              {`Sorry, we have encountered a problem! ${errorMsg}`}
             </p>
           </Route>
           <Route path='/activities'>
-            <Activities conditions={conditionProps}/>
+            {getActivities()}
           </Route>
           <Route exact path='/'>
             {errorMsg && <Redirect to='/error'/>}
