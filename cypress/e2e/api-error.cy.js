@@ -1,7 +1,7 @@
 describe('network error handling', () => {
   beforeEach(() => {
     cy.intercept('GET', 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=80227&days=3', {
-      responseCode:404,
+      statusCode: 404,
       body: {}
     })
     cy.visit('localhost:3000');

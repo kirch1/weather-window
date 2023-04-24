@@ -15,7 +15,7 @@ const Header = () => {
       return (
         <>
           <Link to="/activities" id="activities-button"> <button>Activities</button> </Link>
-          <Link to="/locations" id="activities-button"> <button>Locations</button></Link>
+          <Link to="/locations" id="locations-button"> <button>Locations</button></Link>
         </>
       );
     }

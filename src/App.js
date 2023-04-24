@@ -25,8 +25,10 @@ function App() {
 
   const getData = async () => {
     const rawData = await getWeather(location, 3, setError);
-    const cleanData = cleanWeatherData(rawData);
-    setWeather(cleanData);
+    if(rawData) {
+      const cleanData = cleanWeatherData(rawData);
+      setWeather(cleanData);
+    }
   };
 
   const findWindows = () => {
@@ -86,8 +88,13 @@ function App() {
     return locations.map(location => <Location key={location.zip} location={location} setLocation={setLocation} findWindows={findWindows}/>)
   }
 
-  useEffect(() => getData(), [location]);
-  useEffect(() => findWindows(), [weather]);
+  useEffect(() => {
+    getData()
+  }, [location]);
+
+  useEffect(() => {
+    findWindows()
+  }, [weather]);
 
   return (
     <div className='App'>

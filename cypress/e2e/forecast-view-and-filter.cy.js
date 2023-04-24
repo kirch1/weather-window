@@ -7,7 +7,7 @@ describe('Should be able to view and filter the upcoming forecast', () => {
   });
   
   it('Should see forecast for whole day by default', () => {
-    cy.get('.date-text').contains('2023-04-23');
+    cy.get('.daily-forecast-card > .card-title').contains('2023-04-23');
     cy.get('.daily-forecast-flex > :nth-child(1)').contains('12:00 AM');
     cy.get('.hour-forecast-mini').first().contains('0%');
     cy.get('.daily-forecast-flex > :nth-child(24)').contains('11:00 PM');
@@ -42,6 +42,6 @@ describe('Should be able to view and filter the upcoming forecast', () => {
   it('Should tell user if there are no matches that meet their desired conditions', () => {
     cy.get('.conditions-selector-flex > :nth-child(1) > :nth-child(2) > :nth-child(1)').clear().type(-32);
     cy.get('.conditions-selector-flex > :nth-child(1) > :nth-child(2) > :nth-child(2)').clear().type(-33);
-    cy.get('.forecast-days-parent > div').contains('No Weather Windows Available')
+    cy.get('.daily-forecast-card').contains('No Weather Windows Available')
   });
 })

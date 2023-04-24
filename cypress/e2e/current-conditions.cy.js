@@ -12,7 +12,7 @@ describe('Should be able to view the header and current weather when visit', () 
     cy.get('.current-weather-data')
       .contains('Test Condition')
       .contains('99')
-      .contains('15mph')
+      .contains('15 mph')
   });
 
   it('Should see and error message for visiting an invalid url', () => {
