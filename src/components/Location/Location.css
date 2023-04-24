@@ -1,0 +1,10 @@
+.location-card {
+  height: 7rem;
+  min-width: 20rem;
+  align-self: center;
+}
+
+.set-location-button {
+  margin: 1rem;
+}
+

@@ -1,6 +1,6 @@
 describe('Should be able to view the header and current weather when visit', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=denver&days=3', {
+    cy.intercept('GET', 'https://weatherapi-com.p.rapidapi.com/forecast.json?q=80227&days=3', {
       fixture: 'weather.json'
     })
     
@@ -12,7 +12,7 @@ describe('Should be able to view the header and current weather when visit', () 
     cy.get('.current-weather-data')
       .contains('Test Condition')
       .contains('99')
-      .contains('15mph')
+      .contains('15 mph')
   });
 
   it('Should see and error message for visiting an invalid url', () => {

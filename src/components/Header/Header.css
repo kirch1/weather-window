@@ -13,6 +13,11 @@ a {
   font-weight: bold;
 }
 
+.promo {
+  margin: 0;
+  font-size: 0.7rem;
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -31,4 +36,9 @@ header {
   color: var(--white);
   margin: 0;
   font-size: 2rem;
+}
+
+.nav-buttons-parent {
+  display: flex;
+  gap: 0.5rem;
 }

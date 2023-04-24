@@ -9,9 +9,11 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import cleanWeatherData from "./utilities";
 import activities from "./activitiesData";
 import { Activity } from "./components/Activity/Activity";
+import locations from "./locationsData";
+import { Location } from "./components/Location/Location";
 
 function App() {
-  const [location, setLocation] = useState('denver');
+  const [location, setLocation] = useState('80227');
   const [weather, setWeather] = useState();
   const [windows, setWindows] = useState([]);
   const [temp, setTemp] = useState([-20, 120]);
@@ -23,29 +25,33 @@ function App() {
 
   const getData = async () => {
     const rawData = await getWeather(location, 3, setError);
-    const cleanData = cleanWeatherData(rawData);
-    setWeather(cleanData);
+    if(rawData) {
+      const cleanData = cleanWeatherData(rawData);
+      setWeather(cleanData);
+    }
   };
 
   const findWindows = () => {
     const checkRange = (x, min, max) => x >= min && x <= max;
 
-    const windows = weather.forecast.forecastday.reduce((acc, day) => {
-      day.hour.forEach((hour) => {
-        if (
-          checkRange(hour.temp_f, temp[0], temp[1]) &&
-          checkRange(hour.wind_mph, wind[0], wind[1]) &&
-          checkRange(hour.chance_of_rain, rain[0], rain[1]) &&
-          checkRange(hour.chance_of_snow, snow[0], snow[1]) &&
-          checkRange(hour.humidity, humidity[0], humidity[1])
-        ) {
-          acc.push(hour.time_epoch);
-        }
-      });
-      return acc;
-    }, []);
-
-    setWindows(windows);
+    if(weather) {
+      const windows = weather.forecast.forecastday.reduce((acc, day) => {
+        day.hour.forEach((hour) => {
+          if (
+            checkRange(hour.temp_f, temp[0], temp[1]) &&
+            checkRange(hour.wind_mph, wind[0], wind[1]) &&
+            checkRange(hour.chance_of_rain, rain[0], rain[1]) &&
+            checkRange(hour.chance_of_snow, snow[0], snow[1]) &&
+            checkRange(hour.humidity, humidity[0], humidity[1])
+          ) {
+            acc.push(hour.time_epoch);
+          }
+        });
+        return acc;
+      }, []);
+  
+      setWindows(windows);
+    }
   };
 
   const conditionProps = { 
@@ -78,9 +84,17 @@ function App() {
     ));
   }
 
+  const getLocations = () => {
+    return locations.map(location => <Location key={location.zip} location={location} setLocation={setLocation} findWindows={findWindows}/>)
+  }
+
   useEffect(() => {
-    getData();
-  }, []);
+    getData()
+  }, [location]);
+
+  useEffect(() => {
+    findWindows()
+  }, [weather]);
 
   return (
     <div className='App'>
@@ -94,6 +108,9 @@ function App() {
           </Route>
           <Route path='/activities'>
             {getActivities()}
+          </Route>
+          <Route path='/locations'>
+            {getLocations()}
           </Route>
           <Route exact path='/'>
             {errorMsg && <Redirect to='/error'/>}

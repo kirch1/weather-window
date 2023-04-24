@@ -7,9 +7,11 @@ describe('Activities page', () => {
   })
   
   it('Should be able to navigate to activities page and choose an activity', () => {
-    cy.get('#activities-button').click();
-    cy.url().should('include', '/activities');
-    cy.get('.set-button').last().click();
-    cy.get('.daily-forecast-flex > :nth-child(1)').contains('9:00 AM');
+    cy.get('#locations-button').click();
+    cy.url().should('include', '/locations');
+    cy.wait(500);
+    cy.get(':nth-child(1) > .set-location-button').click();
+    cy.wait(1000);
+    cy.url().should('include', '/');
   })
 })
