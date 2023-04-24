@@ -1,23 +1,36 @@
-import './Header.css';
-import logo from '../../assets/ww_logo.svg';
-import { Link, useLocation } from 'react-router-dom';
+import "./Header.css";
+import logo from "../../assets/ww_logo.svg";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const location = useLocation();
-  return(
-    <header>
-      <img src={logo} alt='App logo' className='header-logo'/>
-      {
-        location.pathname === '/activities' ? 
-        <Link to='/'>
+
+  const getNavButton = () => {
+    if (location.pathname === "/activities") {
+      return (
+        <Link to="/">
           <button>Home</button>
-        </Link> : 
-        <Link to='/activities' id='activities-button'>
+        </Link>
+      );
+    } else if (location.pathname === "/error") {
+      return <div></div>;
+    } else if (location.pathname === "/") {
+      return (
+        <Link to="/activities" id="activities-button">
           <button>Activities</button>
         </Link>
-      }
+      );
+    }
+  };
+
+  return (
+    <header>
+      <Link to="/">
+        <img src={logo} alt="App logo" className="header-logo" />
+      </Link>
+      {getNavButton()}
     </header>
-  )
-}
+  );
+};
 
 export default Header;

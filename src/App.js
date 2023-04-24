@@ -9,15 +9,15 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import { Activities } from "./components/Activities/Activities";
 
 function App() {
-  const [location, setLocation] = useState("denver");
-  const [weather, setWeather] = useState(null);
+  const [location, setLocation] = useState('denver');
+  const [weather, setWeather] = useState();
   const [windows, setWindows] = useState([]);
   const [temp, setTemp] = useState([-20, 120]);
   const [wind, setWind] = useState([0, 100]);
   const [rain, setRain] = useState([0, 100]);
   const [snow, setSnow] = useState([0, 100]);
   const [humidity, setHumidity] = useState([0, 100]);
-  const [errorMsg, setError] = useState("");
+  const [errorMsg, setError] = useState('');
 
   const getData = async () => {
     setWeather(await getWeather(location, 3, setError));
@@ -44,14 +44,6 @@ function App() {
     setWindows(windows);
   };
 
-  const getForecastDays = () => {
-    return weather.forecast.forecastday.map((forecast) => {
-      return (
-        <DailyForecast forecast={forecast} key={forecast.date_epoch} windows={windows}/>
-      );
-    });
-  };
-
   const conditionProps = { 
     temp, setTemp, 
     wind, setWind, 
@@ -61,31 +53,43 @@ function App() {
     findWindows
   }
 
+  const getHomePage = () => {
+    const forecastDays = weather.forecast.forecastday.map(forecast => {
+      return <DailyForecast forecast={forecast} key={forecast.date_epoch} windows={windows}/>
+    });
+    return(
+      <>
+        <CurrentWeather location={weather.location} current={weather.current} />
+        <ConditionsSelector conditions={conditionProps} />
+        <div className='forecast-days-parent'>
+          {forecastDays}
+        </div>
+      </>
+    )
+  }
+
   useEffect(() => {
     getData();
   }, []);
 
   return (
-    <div className="App">
+    <div className='App'>
       <Header />
-      {weather && <CurrentWeather location={weather.location} current={weather.current} />}
       <Switch>
-        <Route path="/error">
-          <p>Error</p>
+        <Route path='/error'>
+          <p className="error-message">
+            {`Sorry, we have encountered a problem! \n ${errorMsg}`}
+          </p>
         </Route>
-        <Route path="/activities">
+        <Route path='/activities'>
           <Activities conditions={conditionProps}/>
         </Route>
-        <Route exact path="/">
-          {weather && <>
-            <ConditionsSelector conditions={conditionProps} />
-            <div className="forecast-days-parent">
-              {getForecastDays()}
-            </div>
-          </>}
+        <Route exact path='/'>
+          {errorMsg && <Redirect to='/error'/>}
+          {weather && getHomePage()}
         </Route>
         <Route>
-          <Redirect to="error" />
+          <Redirect to='/error'/>
         </Route>
       </Switch>
     </div>
