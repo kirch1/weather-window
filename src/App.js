@@ -6,8 +6,9 @@ import DailyForecast from "./components/DailyForecast/DailyForecast";
 import { useEffect, useState } from "react";
 import "./App.css";
 import { Redirect, Route, Switch } from "react-router-dom";
-import { Activities } from "./components/Activities/Activities";
 import cleanWeatherData from "./utilities";
+import activities from "./activitiesData";
+import { Activity } from "./components/Activity/Activity";
 
 function App() {
   const [location, setLocation] = useState('denver');
@@ -62,13 +63,19 @@ function App() {
     });
     return(
       <>
-        <CurrentWeather location={weather.location} current={weather.current} />
-        <ConditionsSelector conditions={conditionProps} />
-        <div className='forecast-days-parent'>
-          {forecastDays}
+        <div className="main-upper">
+          <CurrentWeather location={weather.location} current={weather.current} />
+          <ConditionsSelector conditions={conditionProps} />
         </div>
+        {forecastDays}
       </>
     )
+  }
+
+  const getActivities = () => {
+    return activities.map(activity => (
+      <Activity activity={activity} key={activity.name} conditions={conditionProps}/>
+    ));
   }
 
   useEffect(() => {
@@ -78,23 +85,25 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <Switch>
-        <Route path='/error'>
-          <p className="error-message">
-            {`Sorry, we have encountered a problem! \n ${errorMsg}`}
-          </p>
-        </Route>
-        <Route path='/activities'>
-          <Activities conditions={conditionProps}/>
-        </Route>
-        <Route exact path='/'>
-          {errorMsg && <Redirect to='/error'/>}
-          {weather && getHomePage()}
-        </Route>
-        <Route>
-          <Redirect to='/error'/>
-        </Route>
-      </Switch>
+      <main>
+        <Switch>
+          <Route path='/error'>
+            <p className="error-message">
+              {`Sorry, we have encountered a problem! ${errorMsg}`}
+            </p>
+          </Route>
+          <Route path='/activities'>
+            {getActivities()}
+          </Route>
+          <Route exact path='/'>
+            {errorMsg && <Redirect to='/error'/>}
+            {weather && getHomePage()}
+          </Route>
+          <Route>
+            <Redirect to='/error'/>
+          </Route>
+        </Switch>
+      </main>
     </div>
   );
 }

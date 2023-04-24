@@ -17,11 +17,8 @@ export const Activity = ({activity, conditions}) => {
   }
 
   return(
-    <div className='activity-parent'>
-      <div className='activity-header'>
-        <p className='activity-name'>{activity.name}</p>
-        <button onClick={setConditions} className='set-button'>Set</button>
-      </div>
+    <div className='card activity-card'>
+    <p className='card-title'>{activity.name}</p>
       <div className='activity-conditions'>
         <div className='single-condition'>
           <p className='condition-label'>Temp</p>
@@ -43,6 +40,7 @@ export const Activity = ({activity, conditions}) => {
           <p className='condition-label'>Humidity</p>
           <p className='condition-value'>{activity.humidity[0]}% - {activity.humidity[1]}%</p>
         </div>
+        <button onClick={setConditions} className='set-button'>Set Activity</button>
       </div>
     </div>
   )
