@@ -89,11 +89,11 @@ function App() {
   }
 
   useEffect(() => {
-    getData()
+    getData();
   }, [location]);
 
   useEffect(() => {
-    findWindows()
+    findWindows();
   }, [weather]);
 
   return (

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import stateDict from '../../stateDict';
-import sunny from '../../assets/primary-icons/sunny.svg';
 import './CurrentWeather.css';
 
 const CurrentWeather = ({location, current}) => {

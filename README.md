@@ -4,7 +4,7 @@ Weather Window is a React web application that allows users to find that perfect
 ***
 
 ### Live App Link
-[Weather Window](https://github.com/kirch1/weather-window)
+[Weather Window](https://weather-window.vercel.app/)
 ***
 
 ### Preview of App

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import "./DailyForecast.css";
 
 const DailyForecast = ({ forecast, windows }) => {
-  const formatted = new Date(forecast.date);
   const hours = forecast.hour
     .filter((hour) => windows.includes(hour.time_epoch))
     .map((hour) => <HourForecast key={hour.time_epoch} hour={hour} />);
