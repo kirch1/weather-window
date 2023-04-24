@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './ConditionsSelector.css';
 import RangeInput from './RangeInput/RangeInput';
 
