@@ -44,6 +44,16 @@ button:hover {
   color: var(--white);
 }
 
+.error-message {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--black);
+  flex-grow: 1;
+}
+
 .forecast-days-parent::-webkit-scrollbar {
   width: 14px;
 }

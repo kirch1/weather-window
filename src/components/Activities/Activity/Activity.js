@@ -49,7 +49,7 @@ export const Activity = ({activity, conditions}) => {
 }
 
 Activity.propTypes = {
-  activity: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activity: PropTypes.object.isRequired,
   conditions: PropTypes.shape({
     temp: PropTypes.array.isRequired,
     wind: PropTypes.array.isRequired,
