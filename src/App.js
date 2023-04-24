@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Redirect, Route, Switch } from "react-router-dom";
 import { Activities } from "./components/Activities/Activities";
+import cleanWeatherData from "./utilities";
 
 function App() {
   const [location, setLocation] = useState('denver');
@@ -20,7 +21,9 @@ function App() {
   const [errorMsg, setError] = useState('');
 
   const getData = async () => {
-    setWeather(await getWeather(location, 3, setError));
+    const rawData = await getWeather(location, 3, setError);
+    const cleanData = cleanWeatherData(rawData);
+    setWeather(cleanData);
   };
 
   const findWindows = () => {
