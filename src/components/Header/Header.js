@@ -27,6 +27,7 @@ const Header = () => {
     <header>
       <Link to="/">
         <img src={logo} alt="App logo" className="header-logo" />
+        <p className="logo-text">Weather Window</p>
       </Link>
       {getNavButton()}
     </header>

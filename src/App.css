@@ -15,41 +15,39 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2.5rem;
-  padding-bottom: 1.5rem;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 3rem 0 3rem;
+  overflow: auto;
+  gap: 1rem;
+}
+
+.main-upper {
+  display: flex;
+  gap: 1rem;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   background-color: var(--card-bg-light);
-  border-radius: 8px;
-  padding: 0.3rem 0.8rem;
+  border-radius: 12px;
+  padding: 0.3rem 1rem;
   box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
 }
 
 .card-title {
   width: 100%;
   margin: 0;
-  padding: 0.4rem 0.5rem;
+  padding: 0.6rem 0;
   font-size: 0.7rem;
   text-transform: uppercase;
   font-weight: bold;
   color: var(--text-dark);
   border-bottom: 1px solid var(--tranparent-black);
-  
-}
-
-.forecast-days-parent {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  gap: 2rem;
-  width: 90%;
-  max-width: 1200px;
-  padding: 0 1rem;
-  overflow-y: auto;
 }
 
 button {
@@ -78,22 +76,30 @@ button:hover {
   flex-grow: 1;
 }
 
-.forecast-days-parent::-webkit-scrollbar {
-  width: 14px;
+main::-webkit-scrollbar {
+  width: 20px;
 }
 
-.forecast-days-parent::-webkit-scrollbar-track {
-  background-color: var(--tranparent-black);
-  border-radius: 10px;
+main::-webkit-scrollbar-track {
+  background-color: transparent;
 }
 
-.forecast-days-parent::-webkit-scrollbar-thumb {
-  background-color: var(--white);
+main::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
   border-radius: 20px;
-  border: 3px solid transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+  background-color: #d6dee1;
+  border-radius: 20px;
+  border: 6px solid transparent;
   background-clip: content-box;
 }
 
-.moreInfo::-webkit-scrollbar-thumb:hover {
-  background-color: #396416;
+main::-webkit-scrollbar-thumb:hover {
+  background-color: #a8bbbf;
 }

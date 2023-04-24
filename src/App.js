@@ -62,11 +62,11 @@ function App() {
     });
     return(
       <>
-        <CurrentWeather location={weather.location} current={weather.current} />
-        <ConditionsSelector conditions={conditionProps} />
-        <div className='forecast-days-parent'>
-          {forecastDays}
+        <div className="main-upper">
+          <CurrentWeather location={weather.location} current={weather.current} />
+          <ConditionsSelector conditions={conditionProps} />
         </div>
+        {forecastDays}
       </>
     )
   }
@@ -78,23 +78,25 @@ function App() {
   return (
     <div className='App'>
       <Header />
-      <Switch>
-        <Route path='/error'>
-          <p className="error-message">
-            {`Sorry, we have encountered a problem! \n ${errorMsg}`}
-          </p>
-        </Route>
-        <Route path='/activities'>
-          <Activities conditions={conditionProps}/>
-        </Route>
-        <Route exact path='/'>
-          {errorMsg && <Redirect to='/error'/>}
-          {weather && getHomePage()}
-        </Route>
-        <Route>
-          <Redirect to='/error'/>
-        </Route>
-      </Switch>
+      <main>
+        <Switch>
+          <Route path='/error'>
+            <p className="error-message">
+              {`Sorry, we have encountered a problem! \n ${errorMsg}`}
+            </p>
+          </Route>
+          <Route path='/activities'>
+            <Activities conditions={conditionProps}/>
+          </Route>
+          <Route exact path='/'>
+            {errorMsg && <Redirect to='/error'/>}
+            {weather && getHomePage()}
+          </Route>
+          <Route>
+            <Redirect to='/error'/>
+          </Route>
+        </Switch>
+      </main>
     </div>
   );
 }

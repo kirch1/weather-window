@@ -1,17 +1,22 @@
 .current-weather-card {
-  
+  min-height: 12rem;
+  flex-shrink: 0;
 }
 
 .current-weather-parent {
+  flex-grow: 1;
   color: var(--text-dark);
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
   padding: 1rem;
 }
 
 .current-weather-location {
-  margin: 0.5rem 0 0.5rem 0;
+  margin: 0;
   font-size: 3rem;
+  font-weight: normal;
 }
 
 .current-weather-data {

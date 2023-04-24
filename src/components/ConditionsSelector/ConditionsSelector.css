@@ -1,10 +1,6 @@
-.conditions-selector-parent {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  width: 90%;
-  max-width: 1200px;
-  padding: 1rem 1rem;
+.conditions-selector-card {
+  flex-grow: 1;
+  min-height: 12rem;
 }
 
 .header-text {
@@ -14,11 +10,11 @@
 }
 
 .conditions-selector-flex {
+  flex-grow: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
   align-items: center;
-  color: var(--white);
-  border-radius: 4px;
+  justify-content: center;
 }

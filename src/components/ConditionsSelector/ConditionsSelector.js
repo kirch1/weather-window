@@ -10,7 +10,8 @@ const ConditionsSelector = ({conditions}) => {
   }, [temp, wind, rain, snow, humidity])
 
   return(
-    <div className='conditions-selector-parent'>
+    <div className='card conditions-selector-card'>
+      <p className='card-title'>Desired Conditions</p>
       <form className='conditions-selector-flex'>
         <RangeInput title='Temperature (&#8457;)' min={-50} max={150} values={temp} setRange={setTemp}/>
         <RangeInput title='Wind (mph)' min={0} max={100} values={wind} setRange={setWind}/>
