@@ -27,7 +27,7 @@
 
 .condition-value {
   margin: 0;
-  background-color: var(--tranparent-black);
+  background-color: var(--transparent-black);
   padding: 0.1rem 0.5rem;
   border-radius: 10px;
 }

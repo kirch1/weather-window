@@ -1,5 +1,5 @@
 .daily-forecast-card {
-  
+  min-height: 195px;
 }
 
 .daily-forecast-flex {
@@ -19,6 +19,14 @@
 }
 
 .daily-forecast-flex::-webkit-scrollbar-thumb:horizontal{
-  background: var(--tranparent-black);
+  background: var(--transparent-black);
   border-radius: 10px;
+}
+
+.no-windows {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  color: var(--mid-black);
 }

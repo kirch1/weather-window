@@ -1,16 +1,16 @@
-import Header from "./components/Header/Header";
-import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
-import getWeather from "./api";
-import ConditionsSelector from "./components/ConditionsSelector/ConditionsSelector";
-import DailyForecast from "./components/DailyForecast/DailyForecast";
+import Header from "../Header/Header";
+import { Activity } from "../Activity/Activity";
+import { Location } from "../Location/Location";
+import CurrentWeather from "../CurrentWeather/CurrentWeather";
+import ConditionsSelector from "../ConditionsSelector/ConditionsSelector";
+import DailyForecast from "../DailyForecast/DailyForecast";
+import getWeather from "../../api";
 import { useEffect, useState } from "react";
-import "./App.css";
 import { Redirect, Route, Switch } from "react-router-dom";
-import cleanWeatherData from "./utilities";
-import activities from "./activitiesData";
-import { Activity } from "./components/Activity/Activity";
-import locations from "./locationsData";
-import { Location } from "./components/Location/Location";
+import cleanWeatherData from "../../utilities";
+import activities from "../../activitiesData";
+import locations from "../../locationsData";
+import "./App.css";
 
 function App() {
   const [location, setLocation] = useState('80227');
