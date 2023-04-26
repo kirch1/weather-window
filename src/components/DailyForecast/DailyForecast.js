@@ -9,7 +9,7 @@ const DailyForecast = ({ forecast, windows }) => {
   return (
     <div className='card daily-forecast-card'>
       <p className='card-title'>{forecast.date} Forecast - {hours.length} Weather Windows</p>
-      {hours.length ? <div className="daily-forecast-flex">{hours}</div> : <p>No Weather Windows Available</p>}
+      {hours.length ? <div className="daily-forecast-flex">{hours}</div> : <p className="no-windows">No Weather Windows Found</p>}
     </div>
   );
 };

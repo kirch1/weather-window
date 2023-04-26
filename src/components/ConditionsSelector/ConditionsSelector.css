@@ -1,5 +1,5 @@
 .conditions-selector-card {
-  flex-grow: 1;
+  width: 48%;
   min-height: 12rem;
 }
 
@@ -12,9 +12,34 @@
 .conditions-selector-flex {
   flex-grow: 1;
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.5rem;
   padding: 1rem;
   align-items: center;
-  justify-content: center;
+  margin-bottom: 0.5rem;
+  overflow-x: auto;
+}
+
+.conditions-selector-col {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  gap: 1rem;
+}
+
+.conditions-selector-flex::-webkit-scrollbar{
+  height: 8px;
+  width: 4px;
+  background: transparent;
+  border-radius: 10px;
+}
+.conditions-selector-flex::-webkit-scrollbar-thumb:horizontal{
+  background: var(--transparent-black);
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 800px) {
+  .conditions-selector-card {
+    width: auto;
+  }
 }

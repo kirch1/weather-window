@@ -24,7 +24,7 @@ header {
   align-items: center;
   padding: 0.8rem 1.2rem;
   width: 100%;
-  background-color: #22AED1;
+  background-color: var(--primary);
 }
 
 .header-logo {
@@ -41,4 +41,11 @@ header {
 .nav-buttons-parent {
   display: flex;
   gap: 0.5rem;
+}
+
+@media only screen and (max-width: 500px) {
+  .logo-text,
+  .promo  {
+    display: none;
+  }
 }

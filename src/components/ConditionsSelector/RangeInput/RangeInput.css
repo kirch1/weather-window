@@ -13,7 +13,7 @@
 .dual-input {
   overflow: hidden;
   border-radius: 4px;
-  border: 1px solid var(--tranparent-black);
+  border: 1px solid var(--transparent-black);
 }
 
 .range-condition-input {
@@ -24,7 +24,7 @@
   font-size: 0.8rem;
   color: var(--text-dark);
   padding: 0.5rem 0.3rem;
-  background-color: var(--tranparent-white);
+  background-color: var(--transparent-white);
 }
 
 .range-condition-input:focus {

@@ -1,12 +1,13 @@
 :root {
   --black: #313638;
   --white: #FFFFFB;
-  --tranparent-black: #3136381e;
+  --transparent-black: #3136381e;
   --mid-black: #3136387d;
-  --tranparent-white: #fffffbb3;
-
+  --transparent-white: #fffffbb3;
+  --primary: #22AED1;
+  --secondary: #9BC53D;
   --background-light: #E9EBEC;
-  --card-bg-light: #ffffff;
+  --card-bg-light: #FEFDFF;
   --text-dark: #313638;
 }
 
@@ -52,23 +53,22 @@ main {
   text-transform: uppercase;
   font-weight: bold;
   color: var(--text-dark);
-  border-bottom: 1px solid var(--tranparent-black);
+  border-bottom: 1px solid var(--transparent-black);
 }
 
 button {
   color: var(--black);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montserrat Alternates', sans-serif;
   border: 1px solid var(--mid-black);
   border-radius: 20px;
   padding: 0.3rem 0.8rem;
   cursor: pointer;
-  background-color: var(--white);
-  font-size: 0.9rem;
+  background-color: var(--background-light);
+  font-size: 0.8rem;
 }
 
 button:hover {
-  background-color: var(--mid-black);
-  color: var(--white);
+  opacity: 0.8;
 }
 
 .error-message {
@@ -86,7 +86,7 @@ main::-webkit-scrollbar {
 }
 
 main::-webkit-scrollbar-track {
-  background-color: var(--tranparent-black);
+  background-color: var(--transparent-black);
 }
 
 main::-webkit-scrollbar-thumb {
@@ -110,7 +110,7 @@ main::-webkit-scrollbar-thumb:hover {
 }
 
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 800px) {
   .main-upper {
     flex-direction: column;
   }
