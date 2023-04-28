@@ -30,14 +30,15 @@ function App() {
 
   const findWindows = () => {
     const checkRange = (x, values) => x >= values[0] && x <= values[1];
+    const {temp, wind, rain, snow, humidity} = conditions;
     if(weather) {
       const windows = weather.forecast.forecastday.reduce((acc, day) => {
         day.hour.forEach(hour => {
-          if((!conditions.temp.enabled || checkRange(hour.temp_f, conditions.temp.values)) &&
-            (!conditions.wind.enabled || checkRange(hour.wind_mph, conditions.wind.values)) &&
-            (!conditions.rain.enabled || checkRange(hour.chance_of_rain, conditions.rain.values)) &&
-            (!conditions.snow.enabled || checkRange(hour.chance_of_snow, conditions.snow.values)) &&
-            (!conditions.humidity.enabled || checkRange(hour.humidity, conditions.humidity.values))){
+          if((!temp.enabled || checkRange(hour.temp_f, conditions.temp.values)) &&
+            (!wind.enabled || checkRange(hour.wind_mph, wind.values)) &&
+            (!rain.enabled || checkRange(hour.chance_of_rain, rain.values)) &&
+            (!snow.enabled || checkRange(hour.chance_of_snow, snow.values)) &&
+            (!humidity.enabled || checkRange(hour.humidity, humidity.values))){
               acc.push(hour.time_epoch);
             }
           });

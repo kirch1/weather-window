@@ -12,21 +12,14 @@
 }
 
 .App {
-  background-color: var(--background-light);
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.menu {
-  width: 60px;
-  background-color: #22AED1;
+  
 }
 
 main {
   display: flex;
   flex-direction: column;
   padding: 2rem 5vw;
+  flex-grow: 1;
   overflow: auto;
   gap: 1rem;
 }
