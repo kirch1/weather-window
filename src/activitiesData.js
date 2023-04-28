@@ -1,27 +1,27 @@
 const activities = [
   {
     name: "Running",
-    temp: [40, 70],
-    wind: [0, 10],
-    rain: [0, 30],
-    snow: [0, 30],
-    humidity: [0, 60]
+    temp: {values: [40, 70], enabled: true},
+    wind: {values: [0, 10], enabled: true},
+    rain: {values: [0, 30], enabled: true},
+    snow: {values: [0, 30], enabled: true},
+    humidity: {values: [0, 60], enabled: true}
   },
   {
     name: "Skiing",
-    temp: [20, 60],
-    wind: [0, 15],
-    rain: [0, 10],
-    snow: [50, 100],
-    humidity: null
+    temp: {values: [20, 60], enabled: true},
+    wind: {values: [0, 15], enabled: true},
+    rain: {values: [0, 10], enabled: true},
+    snow: {values: [50, 100], enabled: true},
+    humidity: {values: [0, 100], enabled: false}
   },
   {
     name: "Fishing",
-    temp: [40, 70],
-    wind: [0, 10],
-    rain: [0, 30],
-    snow: [0, 30],
-    humidity: null
+    temp: {values: [40, 70], enabled: true},
+    wind: {values: [0, 10], enabled: true},
+    rain: {values: [0, 30], enabled: true},
+    snow: {values: [0, 30], enabled: true},
+    humidity: {values: [0, 100], enabled: false}
   },
 ];
 

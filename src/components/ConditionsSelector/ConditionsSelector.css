@@ -4,6 +4,7 @@
   flex-shrink: 1;
   min-height: 12rem;
   min-width: 0;
+  max-height: 220px;
 }
 
 .header-text {
@@ -14,22 +15,15 @@
 
 .conditions-selector-flex {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 1.5rem;
   padding: 1rem;
   align-items: center;
+  justify-content: center;
   margin-bottom: 0.5rem;
   overflow-x: auto;
-  min-width: 0;
-  max-width: 100%;
   flex-grow: 1;
-}
-
-.conditions-selector-col {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  height: 100%;
-  gap: 1rem;
 }
 
 .conditions-selector-flex::-webkit-scrollbar{

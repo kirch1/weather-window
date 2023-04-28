@@ -7,11 +7,11 @@ export const Activity = ({activity, conditions, setConditions}) => {
   const history = useHistory();
   const activitySelected = () => {
     setConditions({
-      temp: { ...conditions.temp, values: temp, enabled: temp ? true : false},
-      wind: { ...conditions.wind, values: wind, enabled: wind ? true : false},
-      rain: { ...conditions.rain, values: rain, enabled: rain ? true : false},
-      snow: { ...conditions.snow, values: snow, enabled: snow ? true : false},
-      humidity: { ...conditions.humidity, values: humidity, enabled: humidity ? true : false}
+      temp: { ...conditions.temp, values: temp.values, enabled: temp.enabled},
+      wind: { ...conditions.wind, values: wind.values, enabled: wind.enabled},
+      rain: { ...conditions.rain, values: rain.values, enabled: rain.enabled},
+      snow: { ...conditions.snow, values: snow.values, enabled: snow.enabled},
+      humidity: { ...conditions.humidity, values: humidity.values, enabled: humidity.enabled}
     })
     history.push('/');
   }
@@ -22,23 +22,25 @@ export const Activity = ({activity, conditions, setConditions}) => {
       <div className='activity-conditions'>
         <div className='single-condition'>
           <p className='condition-label'>Temp</p>
-          <p className='condition-value'>{temp[0]} &#8457; - {temp[1]} &#8457;</p>
+          <p className='condition-value'>{temp.values[0]}°F  - {temp.values[1]} °F</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Wind</p>
-          <p className='condition-value'>{wind[0]} mph - {wind[1]} mph</p>
+          <p className='condition-value'>{wind.values[0]} mph - {wind.values[1]} mph</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Rain</p>
-          <p className='condition-value'>{rain[0]}% - {rain[1]}%</p>
+          <p className='condition-value'>{rain.values[0]}% - {rain.values[1]}%</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Snow</p>
-          <p className='condition-value'>{snow[0]}% - {snow[1]}%</p>
+          <p className='condition-value'>{snow.values[0]}% - {snow.values[1]}%</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Humidity</p>
-          <p className='condition-value'>{humidity ? `${humidity[0]}% - ${humidity[1]}%` : 'N/A'}</p>
+          { humidity.enabled ?
+            <p className='condition-value'>{humidity.values[0]}% - {humidity.values[1]}%</p> : 
+            <p className='condition-value'>{'N/A'}</p> }
         </div>
         <button onClick={activitySelected} className='set-button'>Set Activity</button>
       </div>

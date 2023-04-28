@@ -2,7 +2,7 @@ const getWeather = async (location, days, setError) => {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e4b9be3fc5msh2d9cb2497348885p123364jsne7bf516fb4d5',
+      'X-RapidAPI-Key': process.env.REACT_APP_API_KEY,
       'X-RapidAPI-Host': 'weatherapi-com.p.rapidapi.com'
     }
   };
