@@ -5,7 +5,7 @@ const activities = [
     wind: [0, 10],
     rain: [0, 30],
     snow: [0, 30],
-    humidity: [0, 60],
+    humidity: [0, 60]
   },
   {
     name: "Skiing",
@@ -13,7 +13,7 @@ const activities = [
     wind: [0, 15],
     rain: [0, 10],
     snow: [50, 100],
-    humidity: [0, 100],
+    humidity: null
   },
   {
     name: "Fishing",
@@ -21,7 +21,7 @@ const activities = [
     wind: [0, 10],
     rain: [0, 30],
     snow: [0, 30],
-    humidity: [0, 100],
+    humidity: null
   },
 ];
 

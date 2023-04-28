@@ -1,25 +1,36 @@
 import PropTypes from 'prop-types';
-import "./RangeSlider.css";
 import { Checkbox, Slider } from '@mui/material';
+import "./RangeSlider.css";
 
-const RangeSlider = ({ title, min, max, values, setRange }) => {
+const RangeSlider = ({ conditionKey, conditions, setConditions }) => {
+  const { title, min, max, values, enabled } = conditions[conditionKey];
+
+  const conditionChange = (newValue, name) => {
+    setConditions({
+      ...conditions,
+      [conditionKey]: {
+        ...conditions[conditionKey],
+        [name]: newValue
+      }
+    })
+  }
 
   return (
     <div className="range-slider-parent">
       <p className="range-slider-title">{title}</p>
       <div className='range-slider-row'>
-        <Checkbox size='small'/>
-        <p className='range-slider-value'>{values[0]}</p>
+        <Checkbox size='small' checked={enabled} onChange={(e) => conditionChange(e.target.checked, 'enabled')}/>
+        <p className='range-slider-value'>{enabled ? values[0] : '-'}</p>
         <Slider
               className='range-slider'
-              disabled={false}
+              disabled={!enabled}
               size='small'
               value={values}
               min={min}
               max={max}
-              onChange={(e) => {setRange(e.target.value)}}
+              onChange={(e) => conditionChange(e.target.value, 'values')}
               />
-        <p className='range-slider-value'>{values[1]}</p>
+        <p className='range-slider-value'>{enabled ? values[1] : '-'}</p>
       </div>
     </div>
   );
@@ -28,9 +39,5 @@ const RangeSlider = ({ title, min, max, values, setRange }) => {
 export default RangeSlider;
 
 RangeSlider.propTypes = {
-  title: PropTypes.string,
-  min: PropTypes.number,
-  max: PropTypes.number,
-  values: PropTypes.arrayOf(PropTypes.number),
-  setRange: PropTypes.func
+  condition: PropTypes.object
 }
