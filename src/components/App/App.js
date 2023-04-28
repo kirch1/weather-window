@@ -10,83 +10,86 @@ import { Redirect, Route, Switch } from "react-router-dom";
 import cleanWeatherData from "../../utilities";
 import activities from "../../activitiesData";
 import locations from "../../locationsData";
+import { conditionsData } from "../../conditionsData";
 import "./App.css";
 
 function App() {
-  const [location, setLocation] = useState('80227');
+  const [location, setLocation] = useState("80227");
   const [weather, setWeather] = useState();
   const [windows, setWindows] = useState([]);
-  const [temp, setTemp] = useState([-20, 120]);
-  const [wind, setWind] = useState([0, 100]);
-  const [rain, setRain] = useState([0, 100]);
-  const [snow, setSnow] = useState([0, 100]);
-  const [humidity, setHumidity] = useState([0, 100]);
-  const [errorMsg, setError] = useState('');
+  const [conditions, setConditions] = useState(conditionsData);
+  const [errorMsg, setError] = useState("");
 
   const getData = async () => {
     const rawData = await getWeather(location, 3, setError);
-    if(rawData) {
+    if (rawData) {
       const cleanData = cleanWeatherData(rawData);
       setWeather(cleanData);
     }
   };
 
   const findWindows = () => {
-    const checkRange = (x, min, max) => x >= min && x <= max;
-
+    const checkRange = (x, values) => x >= values[0] && x <= values[1];
     if(weather) {
       const windows = weather.forecast.forecastday.reduce((acc, day) => {
-        day.hour.forEach((hour) => {
-          if (
-            checkRange(hour.temp_f, temp[0], temp[1]) &&
-            checkRange(hour.wind_mph, wind[0], wind[1]) &&
-            checkRange(hour.chance_of_rain, rain[0], rain[1]) &&
-            checkRange(hour.chance_of_snow, snow[0], snow[1]) &&
-            checkRange(hour.humidity, humidity[0], humidity[1])
-          ) {
-            acc.push(hour.time_epoch);
-          }
-        });
+        day.hour.forEach(hour => {
+          if((!conditions.temp.enabled || checkRange(hour.temp_f, conditions.temp.values)) &&
+            (!conditions.wind.enabled || checkRange(hour.wind_mph, conditions.wind.values)) &&
+            (!conditions.rain.enabled || checkRange(hour.chance_of_rain, conditions.rain.values)) &&
+            (!conditions.snow.enabled || checkRange(hour.chance_of_snow, conditions.snow.values)) &&
+            (!conditions.humidity.enabled || checkRange(hour.humidity, conditions.humidity.values))){
+              acc.push(hour.time_epoch);
+            }
+          });
         return acc;
       }, []);
-  
       setWindows(windows);
     }
   };
 
-  const conditionProps = { 
-    temp, setTemp, 
-    wind, setWind, 
-    rain, setRain, 
-    snow, setSnow, 
-    humidity, setHumidity,
-    findWindows
-  }
-
   const getHomePage = () => {
-    const forecastDays = weather.forecast.forecastday.map(forecast => {
-      return <DailyForecast forecast={forecast} key={forecast.date_epoch} windows={windows}/>
+    const forecastDays = weather.forecast.forecastday.map((forecast) => {
+      return (
+        <DailyForecast
+          forecast={forecast}
+          key={forecast.date_epoch}
+          windows={windows}
+        />
+      );
     });
-    return(
+    return (
       <>
         <div className="main-upper">
-          <CurrentWeather location={weather.location} current={weather.current} />
-          <ConditionsSelector conditions={conditionProps} />
+          <CurrentWeather
+            location={weather.location}
+            current={weather.current}
+          />
+          <ConditionsSelector
+            conditions={conditions}
+            setConditions={setConditions}
+          />
         </div>
         {forecastDays}
       </>
-    )
-  }
+    );
+  };
 
-  const getActivities = () => {
-    return activities.map(activity => (
-      <Activity activity={activity} key={activity.name} conditions={conditionProps}/>
-    ));
-  }
+  const activityDisplay = activities.map(activity => (
+    <Activity
+      key={activity.name}
+      activity={activity}
+      conditions={conditions}
+      setConditions={setConditions}
+    />
+  ));
 
-  const getLocations = () => {
-    return locations.map(location => <Location key={location.zip} location={location} setLocation={setLocation} findWindows={findWindows}/>)
-  }
+  const locationDisplay = locations.map(location => (
+    <Location
+      key={location.zip}
+      location={location}
+      setLocation={setLocation}
+    />
+  ));
 
   useEffect(() => {
     getData();
@@ -94,30 +97,26 @@ function App() {
 
   useEffect(() => {
     findWindows();
-  }, [weather]);
+  }, [weather, conditions]);
 
   return (
-    <div className='App'>
+    <div className="App">
       <Header />
       <main>
         <Switch>
-          <Route path='/error'>
+          <Route path="/error">
             <p className="error-message">
               {`Sorry, we have encountered a problem! ${errorMsg}`}
             </p>
           </Route>
-          <Route path='/activities'>
-            {getActivities()}
-          </Route>
-          <Route path='/locations'>
-            {getLocations()}
-          </Route>
-          <Route exact path='/'>
-            {errorMsg && <Redirect to='/error'/>}
+          <Route path="/activities">{activityDisplay}</Route>
+          <Route path="/locations">{locationDisplay}</Route>
+          <Route exact path="/">
+            {errorMsg && <Redirect to="/error" />}
             {weather && getHomePage()}
           </Route>
           <Route>
-            <Redirect to='/error'/>
+            <Redirect to="/error" />
           </Route>
         </Switch>
       </main>

@@ -2,45 +2,45 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
 import './Activity.css';
 
-export const Activity = ({activity, conditions}) => {
-  const { setTemp, setWind, setRain, setSnow, setHumidity, findWindows } = conditions;
-
+export const Activity = ({activity, conditions, setConditions}) => {
+  const { name, temp, wind, rain, snow, humidity } = activity;
   const history = useHistory();
-  const setConditions = () => {
-    setTemp(activity.temp);
-    setWind(activity.wind);
-    setRain(activity.rain);
-    setSnow(activity.snow);
-    setHumidity(activity.humidity);
-    findWindows();
+  const activitySelected = () => {
+    setConditions({
+      temp: { ...conditions.temp, values: temp, enabled: temp ? true : false},
+      wind: { ...conditions.wind, values: wind, enabled: wind ? true : false},
+      rain: { ...conditions.rain, values: rain, enabled: rain ? true : false},
+      snow: { ...conditions.snow, values: snow, enabled: snow ? true : false},
+      humidity: { ...conditions.humidity, values: humidity, enabled: humidity ? true : false}
+    })
     history.push('/');
   }
 
   return(
     <div className='card activity-card'>
-    <p className='card-title'>{activity.name}</p>
+    <p className='card-title'>{name}</p>
       <div className='activity-conditions'>
         <div className='single-condition'>
           <p className='condition-label'>Temp</p>
-          <p className='condition-value'>{activity.temp[0]} &#8457; - {activity.temp[1]} &#8457;</p>
+          <p className='condition-value'>{temp[0]} &#8457; - {temp[1]} &#8457;</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Wind</p>
-          <p className='condition-value'>{activity.wind[0]} mph - {activity.wind[1]} mph</p>
+          <p className='condition-value'>{wind[0]} mph - {wind[1]} mph</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Rain</p>
-          <p className='condition-value'>{activity.rain[0]}% - {activity.rain[1]}%</p>
+          <p className='condition-value'>{rain[0]}% - {rain[1]}%</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Snow</p>
-          <p className='condition-value'>{activity.snow[0]}% - {activity.snow[1]}%</p>
+          <p className='condition-value'>{snow[0]}% - {snow[1]}%</p>
         </div>
         <div className='single-condition'>
           <p className='condition-label'>Humidity</p>
-          <p className='condition-value'>{activity.humidity[0]}% - {activity.humidity[1]}%</p>
+          <p className='condition-value'>{humidity ? `${humidity[0]}% - ${humidity[1]}%` : 'N/A'}</p>
         </div>
-        <button onClick={setConditions} className='set-button'>Set Activity</button>
+        <button onClick={activitySelected} className='set-button'>Set Activity</button>
       </div>
     </div>
   )
@@ -48,17 +48,5 @@ export const Activity = ({activity, conditions}) => {
 
 Activity.propTypes = {
   activity: PropTypes.object.isRequired,
-  conditions: PropTypes.shape({
-    temp: PropTypes.array.isRequired,
-    wind: PropTypes.array.isRequired,
-    rain: PropTypes.array.isRequired,
-    snow: PropTypes.array.isRequired,
-    humidity: PropTypes.array.isRequired,
-    setTemp: PropTypes.func.isRequired,
-    setWind: PropTypes.func.isRequired,
-    setRain: PropTypes.func.isRequired,
-    setSnow: PropTypes.func.isRequired,
-    setHumidity: PropTypes.func.isRequired,
-    findWindows: PropTypes.func.isRequired
-  })
+  setConditions: PropTypes.func
 }

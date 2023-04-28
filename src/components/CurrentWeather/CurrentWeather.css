@@ -1,6 +1,6 @@
 .current-weather-card {
   min-height: 12rem;
-  flex: 1;
+  flex-shrink: 0;
 }
 
 .current-weather-parent {
@@ -15,12 +15,12 @@
 
 .current-weather-location {
   margin: 0;
-  font-size: calc(3vw + 16px);
+  font-size: 2.5rem;
   font-weight: normal;
 }
 
 .current-weather-data {
-  font-size: calc(1.5vw + 6px);
+  font-size: 1.5rem;
 }
 
 .current-weather-icon {
